@@ -1,0 +1,20 @@
+seed: 6
+
+# DATASET
+dataset: pancreas
+prior_col: tech
+label_col: celltype
+
+# METHOD
+method: ctsne
+ctsne.beta: 1.0
+
+# Training
+training.theta: 0.5
+training.max_iter: 1000
+training.perplexity: 50
+training.seed: 42
+training.keep_nonzero: 3
+
+# EVALUATION
+evaluation_measures: ["rnx", "laplacian", "jaccard", "curves"]

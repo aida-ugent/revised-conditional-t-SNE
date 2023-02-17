@@ -1,0 +1,53 @@
+name: immune, fastctsne, alphas, fixed perp
+program: ../wandb_sweep.py
+project: ctsne
+
+method: grid
+
+parameters:
+  seed:
+    value: 6
+
+  # DATASET
+  dataset: 
+    value: immune
+  prior_col: 
+    value: batch
+  label_col: 
+    value: celltype
+
+
+  # METHOD
+  method: 
+    value: fastctsne
+
+  fastctsne:
+      parameters:
+          alpha:
+              values: [0.8, 0.6, 0.4, 0.2, 1.e-1, 1.e-2, 1.e-3, 1.e-4, 1.e-5, 1.e-6, 1.e-7, 1.e-8, 1.e-9, 1.e-10, 1.e-20, 1.e-30]
+          fixed_perp:
+              value: True
+          hd_tdist:
+              value: False
+          hd_df:
+              value: 0
+
+  # Training
+  training:
+    parameters:
+      perplexity:
+        value: 50
+      theta:
+        value: 0.5
+      max_iter:
+        value: 1000
+      seed:
+        value: 42
+      keep_nonzero:
+        value: 3
+
+  # Evaluation
+  evaluation_measures:
+    value: ["rnx", "laplacian", "jaccard", "curves"]
+  evaluation_sampling: 
+    value: 0.05

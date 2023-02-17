@@ -1,0 +1,20 @@
+# run: conda env create --prefix ./ctsne_env --file requirements.yaml
+# scanpy and scib needed for preprocessing the immune data
+
+name: ctsne_env
+dependencies:
+- python
+- scipy
+- matplotlib
+- seaborn
+- pyreadr
+- ipykernel
+- pip
+- plotly
+- tqdm
+- scikit-learn
+- pip:
+  - wandb
+  - pandas
+  - numpy
+  - pillow

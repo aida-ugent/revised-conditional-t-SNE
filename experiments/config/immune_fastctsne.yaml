@@ -1,0 +1,24 @@
+seed: 6
+
+# DATASET
+dataset: immune
+prior_col: batch
+label_col: celltype
+
+immune.prior_colname: batch
+
+
+# METHOD
+method: fastctsne
+fastctsne.alpha: 1.e-7
+
+# Training
+training.theta: 0.5
+training.max_iter: 1000
+training.perplexity: 50
+training.seed: 42
+training.keep_nonzero: 3
+
+# Evaluation
+evaluation_measures: ["rnx", "laplacian", "jaccard", "curves"]
+evaluation_sampling: 0.05

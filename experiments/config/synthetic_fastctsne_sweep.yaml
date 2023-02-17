@@ -1,0 +1,73 @@
+name: synthetic data, fastctsne alpha, fixed perp
+program: ../wandb_sweep.py
+project: ctsne
+
+method: grid
+
+parameters:
+  seed:
+    value: 6
+
+  # DATASET
+  dataset: 
+    value: synthetic
+  prior_col: 
+    value: batch
+  label_col: 
+    value: celltype
+
+  synthetic:
+    parameters:
+      num_c1:
+        value: 2
+      num_c1: 
+        value: 2
+      num_c2: 
+        value: 3
+      dim_c1: 
+        value: 4
+      dim_c2: 
+        value: 2
+      var_c1: 
+        value: 5
+      var_c2: 
+        value: 1
+      noise_dim: 
+        value: 4
+      minimum_points: 
+        value: 200
+      c1_sizes: 
+        value: [0.4, 0.6]
+
+  # METHOD
+  method: 
+    value: fastctsne
+
+  fastctsne:
+      parameters:
+          alpha:
+              values: [0.8, 0.6, 0.4, 0.2, 1.e-1, 1.e-2, 1.e-3, 1.e-4, 1.e-5, 1.e-6, 1.e-7, 1.e-8, 1.e-9, 1.e-10, 1.e-20, 1.e-30]
+          fixed_perp:
+              value: True
+          hd_tdist:
+              value: False
+          hd_df:
+              value: 0
+
+  # Training
+  training:
+    parameters:
+      perplexity:
+        value: 30
+      theta:
+        value: 0.2
+      max_iter:
+        value: 750
+      seed:
+        value: 42
+      keep_nonzero:
+        value: 3
+
+  # Evaluation
+  evaluation_measures:
+    value: ["rnx", "laplacian", "jaccard", "curves"]

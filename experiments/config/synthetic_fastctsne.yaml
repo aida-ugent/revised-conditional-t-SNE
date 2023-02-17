@@ -1,0 +1,30 @@
+seed: 6
+
+# DATASET
+dataset: synthetic
+prior_col: batch
+label_col: celltype
+
+synthetic.num_c1: 2
+synthetic.num_c2: 3
+synthetic.dim_c1: 4
+synthetic.dim_c2: 2
+synthetic.var_c1: 5
+synthetic.var_c2: 1
+synthetic.noise_dim: 4
+synthetic.minimum_points: 200
+synthetic.c1_sizes: [0.4, 0.6]
+
+# METHOD
+method: fastctsne
+fastctsne.alpha: 1.e-7
+
+# Training
+training.theta: 0.2
+training.max_iter: 750
+training.perplexity: 30
+training.seed: 42
+training.keep_nonzero: 3
+
+# Evaluation
+evaluation_measures: ["laplacian", "curves", "jaccard", "rnx"]
